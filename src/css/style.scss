@@ -1,0 +1,72 @@
+@import "roots.css";
+
+*,
+*:before,
+*:after {
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  background-color: var(--dark);
+  color: var(--white);
+}
+
+html,
+body {
+  height: 100%;
+}
+
+.wrapper {
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+}
+
+main {
+  flex: 1 0 auto;
+}
+.header {
+  margin: 20px 0;
+  text-align: center;
+
+  &-nav {
+    display: flex;
+    justify-content: center;
+
+    a {
+      color: var(--white);
+      text-decoration: none;
+
+      &:not(:last-child) {
+        margin-right: 20px;
+      }
+    }
+  }
+}
+
+footer {
+  flex: 0 0 auto;
+  padding: 20px 15px;
+  text-align: center;
+  font-size: 18px;
+  color: var(--white);
+}
+
+#app {
+  font-family: Avenir, Helvetica, Arial, sans-serif;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  height: 100%;
+}
+.container {
+  max-width: 100%;
+  padding: 0 15px;
+  margin: 0 auto;
+}
+
+button {
+  background-color: rgba(0, 0, 0, 0);
+  border: none;
+  color: white;
+}
