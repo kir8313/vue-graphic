@@ -63,9 +63,9 @@ const router = useRouter();
 const route = useRoute();
 const store = useStore();
 const allFines = ref(1);
-const week = ref(null);
-const mount = ref(null);
-const quarter = ref(null);
+const week = ref([]);
+const mount = ref([]);
+const quarter = ref([]);
 const year = ref([]);
 const statistics = ref ({week: 0, mount: 0, quarter: 0, year: 0});
 const countsCategories = ref({});
@@ -76,16 +76,14 @@ onMounted(async () => {
   if (route.query.range) {
     await upload(['6', '30', '90', '365'].includes(route.query.range) ? route.query.range : '6');
   } else {
-    try {
-      await upload('6');
-      router.replace({query: {range: '6'}});
-    } catch (e) {}
+    await upload('6');
+    router.replace({query: {range: '6'}});
   }
   await getYearData();
 })
 
 const getYearData = async () => {
-  if (!year.value) {
+  if (!year.value.length) {
     try {
       year.value = await store.dispatch('fines/getYearFines');
     } catch (e) {}
@@ -116,7 +114,7 @@ const upload = async (dayCount) => {
 };
 
 const checkRange = async (dayCount, variable) => {
-  if (!variable.value) {
+  if (!variable.value.length) {
     try {
       variable.value = await store.dispatch('fines/getFines', dayCount);
     } catch (e) {}
