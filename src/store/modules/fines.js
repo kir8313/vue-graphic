@@ -4,7 +4,7 @@ export default {
   actions: {
     async getFines(_, range) {
       try {
-        const response = await fetch(process.env.VUE_APP_DB + range + '.json');
+        const response = await fetch('https://test-834e2-default-rtdb.europe-west1.firebasedatabase.app/' + range + '.json');
         const result = await response.json();
         console.log('result', result);
         if (!result) {
@@ -18,7 +18,7 @@ export default {
 
     async getYearFines() {
       try {
-        const response = await fetch(process.env.VUE_APP_DB + '365' + '.json');
+        const response = await fetch('https://test-834e2-default-rtdb.europe-west1.firebasedatabase.app/' + '365' + '.json');
         const result = await response.json();
         console.log('result year', result);
         if (!result) {
