@@ -85,7 +85,7 @@ onMounted(async () => {
 const getYearData = async () => {
   if (!year.value.length) {
     try {
-      year.value = await store.dispatch('fines/getYearFines');
+      year.value = await store.dispatch('fines/getYear');
     } catch (e) {}
   }
   const masData = [7, 31, 91, year.value.length];
@@ -116,7 +116,7 @@ const upload = async (dayCount) => {
 const checkRange = async (dayCount, variable) => {
   if (!variable.value.length) {
     try {
-      variable.value = await store.dispatch('fines/getFines', dayCount);
+      variable.value = await store.dispatch('fines/get', dayCount);
     } catch (e) {}
   }
   isLoading.value = false;

@@ -2,7 +2,7 @@ export default {
   namespaced: true,
 
   actions: {
-    async getFines(_, range) {
+    async get(_, range) {
       try {
         const response = await fetch(`${process.env.VUE_APP_DB}${range}.json`);
         const result = await response.json();
@@ -16,7 +16,7 @@ export default {
       }
     },
 
-    async getYearFines() {
+    async getYear() {
       try {
         const response = await fetch(process.env.VUE_APP_DB + '365.json');
         const result = await response.json();
